@@ -1,0 +1,16 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="96" fill="#437eba"/>
+  <g fill="#ffffff" transform="translate(106 106) scale(3)">
+    <g>
+      <g transform="rotate(0 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+      <g transform="rotate(45 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+      <g transform="rotate(90 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+      <g transform="rotate(135 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+      <g transform="rotate(180 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+      <g transform="rotate(225 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+      <g transform="rotate(270 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+      <g transform="rotate(315 50 50)"><path d="M50 12 q7 0 9 8 l-9 9 -9 -9 q2 -8 9 -8 Z"/></g>
+    </g>
+    <circle cx="50" cy="50" r="7"/>
+  </g>
+</svg>

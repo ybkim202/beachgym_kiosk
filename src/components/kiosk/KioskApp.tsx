@@ -217,11 +217,28 @@ export function KioskApp() {
 }
 
 /* ============================ Attract ============================ */
+/** 사용자 제스처(터치)에서 전체화면 진입 — 브라우저 주소창·탭 숨김 */
+function enterFullscreen() {
+  const el = document.documentElement as HTMLElement & {
+    webkitRequestFullscreen?: () => Promise<void>;
+  };
+  try {
+    if (document.fullscreenElement) return;
+    if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  } catch {
+    /* 일부 브라우저/권한에서 무시 */
+  }
+}
+
 function Attract({ onStart, lang }: { onStart: () => void; lang: Language }) {
   const T = t(lang);
   return (
     <button
-      onClick={onStart}
+      onClick={() => {
+        enterFullscreen();
+        onStart();
+      }}
       className="from-marina-light flex h-full w-full flex-col items-center justify-center bg-gradient-to-b to-white"
     >
       <LogoFull />

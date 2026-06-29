@@ -80,7 +80,7 @@ create index if not exists surveys_created_at_idx on public.surveys (created_at 
 alter table public.surveys enable row level security;
 
 -- ============================================================
--- 직원 업무 기록 (staff_logs) + 사진 스토리지
+-- 직원 업무 기록 (staff_events) + 사진 스토리지
 -- ============================================================
 create table if not exists public.staff_events (
   id          uuid primary key default gen_random_uuid(),
