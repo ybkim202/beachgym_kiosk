@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* ===== ILSAN BEACH GYM — Brand Tokens ===== */
+:root {
+  --background: #fefefe;
+  --foreground: #1a1a1a;
+
+  /* Brand palette (운영계획서 Color Palette) */
+  --marina: #437eba; /* primary blue */
+  --marina-dark: #335f8c;
+  --marina-light: #eaf1f8;
+  --terracotta: #c85840; /* accent */
+  --terracotta-dark: #a8442f;
+  --ink: #1a1a1a; /* material black */
+  --muted: #6b7280;
+  --line: #e6e8eb;
+  --surface: #f5f7f9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-marina: var(--marina);
+  --color-marina-dark: var(--marina-dark);
+  --color-marina-light: var(--marina-light);
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-dark: var(--terracotta-dark);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+
+  --font-sans: var(--font-noto-sans-kr), "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Kiosk: 무인 태블릿 — 텍스트 선택/롱프레스/확대 방지 */
+.kiosk-root {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+.kiosk-root input,
+.kiosk-root textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* 입력 가능한 영역의 기본 포커스 링 정리 */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+  outline: none;
+}
+
+/* 부드러운 단계 전환 */
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-step-in {
+  animation: step-in 0.35s ease-out both;
+}
+
+/* 숫자 카운트(대시보드) 등 탭형 숫자 */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 키오스크 입력 필드 (큰 터치 타깃) */
+.kiosk-input {
+  width: 100%;
+  border-radius: 0.875rem;
+  border: 2px solid var(--line);
+  background: #fff;
+  padding: 0.9rem 1.1rem;
+  font-size: 1.25rem;
+  color: var(--ink);
+  transition: border-color 0.15s;
+}
+.kiosk-input::placeholder {
+  color: #b3b9c0;
+}
+.kiosk-input:focus {
+  border-color: var(--marina);
+}
