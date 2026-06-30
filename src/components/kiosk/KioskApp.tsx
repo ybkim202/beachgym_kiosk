@@ -552,7 +552,7 @@ function InfoStep({
                 options={T.regions}
                 value={form.region}
                 onSelect={(v) => set("region", v as Region)}
-                cols={3}
+                cols={4}
               />
             </Field>
           </div>

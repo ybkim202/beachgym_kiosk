@@ -8,6 +8,7 @@ import {
   kstStartOfMonth,
   kstStartOfWeek,
 } from "./time";
+import { REGIONS } from "./types";
 import type {
   AgeGroup,
   Breakdowns,
@@ -72,15 +73,9 @@ function emptyBreakdowns(): Breakdowns {
   return {
     gender: { male: 0, female: 0, other: 0, unknown: 0 },
     age: { "10s": 0, "20s": 0, "30s": 0, "40s": 0, "50plus": 0, unknown: 0 },
-    region: {
-      donggu: 0,
-      namgu: 0,
-      junggu: 0,
-      bukgu: 0,
-      uljugun: 0,
-      other: 0,
-      unknown: 0,
-    },
+    region: Object.fromEntries(
+      [...REGIONS, "unknown"].map((k) => [k, 0]),
+    ) as Breakdowns["region"],
     language: { ko: 0, en: 0 },
   };
 }

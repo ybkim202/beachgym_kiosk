@@ -6,21 +6,15 @@ export type NotifyStatus = "pending" | "sent" | "failed" | "skipped";
 export type AgeGroup = "10s" | "20s" | "30s" | "40s" | "50plus";
 export const AGE_GROUPS: AgeGroup[] = ["10s", "20s", "30s", "40s", "50plus"];
 
-/** 지역 (주소 대신 선택형) */
+/** 지역 (주소 대신 선택형) — 전국 17개 시·도 + 해외 */
 export type Region =
-  | "donggu"
-  | "namgu"
-  | "junggu"
-  | "bukgu"
-  | "uljugun"
-  | "other";
+  | "seoul" | "busan" | "daegu" | "incheon" | "gwangju" | "daejeon"
+  | "ulsan" | "sejong" | "gyeonggi" | "gangwon" | "chungbuk" | "chungnam"
+  | "jeonbuk" | "jeonnam" | "gyeongbuk" | "gyeongnam" | "jeju" | "overseas";
 export const REGIONS: Region[] = [
-  "donggu",
-  "namgu",
-  "junggu",
-  "bukgu",
-  "uljugun",
-  "other",
+  "seoul", "busan", "daegu", "incheon", "gwangju", "daejeon",
+  "ulsan", "sejong", "gyeonggi", "gangwon", "chungbuk", "chungnam",
+  "jeonbuk", "jeonnam", "gyeongbuk", "gyeongnam", "jeju", "overseas",
 ];
 
 /** visits 테이블 1행 (DB 컬럼은 snake_case) */

@@ -3,6 +3,7 @@ import { BASE_PATH } from "@/lib/config";
 
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
+import { REGIONS } from "@/lib/types";
 import type { AgeGroup, Breakdowns, Gender, Region } from "@/lib/types";
 
 const ADMIN_TABS = [
@@ -90,13 +91,11 @@ export const AGE_LABEL: Record<AgeGroup | "unknown", string> = {
   unknown: "미입력",
 };
 export const REGION_LABEL: Record<Region | "unknown", string> = {
-  donggu: "동구",
-  namgu: "남구",
-  junggu: "중구",
-  bukgu: "북구",
-  uljugun: "울주군",
-  other: "울산 외",
-  unknown: "미입력",
+  seoul: "서울", busan: "부산", daegu: "대구", incheon: "인천",
+  gwangju: "광주", daejeon: "대전", ulsan: "울산", sejong: "세종",
+  gyeonggi: "경기", gangwon: "강원", chungbuk: "충북", chungnam: "충남",
+  jeonbuk: "전북", jeonnam: "전남", gyeongbuk: "경북", gyeongnam: "경남",
+  jeju: "제주", overseas: "해외", unknown: "미입력",
 };
 /** 언어 → 내/외국인 구분 */
 export const NAT_LABEL: Record<"ko" | "en", string> = {
@@ -219,7 +218,7 @@ export function BreakdownPanel({ breakdown }: { breakdown: Breakdowns }) {
     AGE_LABEL,
   );
   const regionRows = rowsFrom(
-    ["donggu", "namgu", "junggu", "bukgu", "uljugun", "other", "unknown"] as const,
+    [...REGIONS, "unknown"] as const,
     breakdown.region,
     REGION_LABEL,
   );

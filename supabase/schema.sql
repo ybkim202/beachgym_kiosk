@@ -13,7 +13,7 @@ create table if not exists public.visits (
   party_size    int         not null default 1 check (party_size between 1 and 20),
   age_group     text        check (age_group in ('10s','20s','30s','40s','50plus')),
   gender        text        check (gender in ('male','female','other')),
-  region        text        check (region in ('donggu','namgu','junggu','bukgu','uljugun','other')),
+  region        text        check (region in ('seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju','overseas')),
   language      text        not null default 'ko' check (language in ('ko','en')),
   agreed        boolean     not null default false,
   signed_name   text,
