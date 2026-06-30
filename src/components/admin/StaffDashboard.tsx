@@ -56,7 +56,7 @@ export function StaffDashboard() {
       ) : events.length === 0 ? (
         <div className="text-muted flex h-[60vh] flex-col items-center justify-center gap-2">
           <p>아직 등록된 업무 기록이 없습니다</p>
-          <a href="/staff" className="text-marina text-sm underline">
+          <a href={`${BASE_PATH}/staff`} className="text-marina text-sm underline">
             직원 기록 작성 페이지 열기
           </a>
         </div>
