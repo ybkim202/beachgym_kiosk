@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LogoFull, LogoMark } from "@/components/Logo";
 import { t } from "@/lib/i18n";
-import { LINKS, OPERATION } from "@/lib/config";
+import { LINKS, OPERATION, BASE_PATH } from "@/lib/config";
 import type { AgeGroup, Gender, Language, Region } from "@/lib/types";
 import { SignaturePad } from "./SignaturePad";
 import { QR } from "./QR";
@@ -109,7 +109,7 @@ export function KioskApp() {
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch("/api/checkin", {
+      const res = await fetch(BASE_PATH + "/api/checkin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

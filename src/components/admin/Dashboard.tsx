@@ -1,4 +1,5 @@
 "use client";
+import { BASE_PATH } from "@/lib/config";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DashboardStats } from "@/lib/types";
@@ -26,7 +27,7 @@ export function Dashboard() {
 
   const load = useCallback(async () => {
     try {
-      const res = await fetch("/api/admin/stats", { cache: "no-store" });
+      const res = await fetch(BASE_PATH + "/api/admin/stats", { cache: "no-store" });
       if (res.status === 401) {
         window.location.reload();
         return;

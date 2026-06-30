@@ -1,4 +1,5 @@
 "use client";
+import { BASE_PATH } from "@/lib/config";
 
 import { useState } from "react";
 import { LogoMark } from "@/components/Logo";
@@ -77,7 +78,7 @@ export function SurveyForm() {
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch("/api/survey", {
+      const res = await fetch(BASE_PATH + "/api/survey", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

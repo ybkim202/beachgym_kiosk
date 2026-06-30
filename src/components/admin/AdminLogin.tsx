@@ -1,4 +1,5 @@
 "use client";
+import { BASE_PATH } from "@/lib/config";
 
 import { useState } from "react";
 import { LogoMark } from "@/components/Logo";
@@ -13,7 +14,7 @@ export function AdminLogin() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/admin/login", {
+      const res = await fetch(BASE_PATH + "/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),

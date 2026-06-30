@@ -1,4 +1,5 @@
 "use client";
+import { BASE_PATH } from "@/lib/config";
 
 import { useEffect, useState } from "react";
 import type { StaffEventKind, StaffEventRow } from "@/lib/staff";
@@ -22,7 +23,7 @@ export function StaffDashboard() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/api/admin/staff", { cache: "no-store" });
+        const res = await fetch(BASE_PATH + "/api/admin/staff", { cache: "no-store" });
         if (res.status === 401) return window.location.reload();
         const json = await res.json();
         if (!json.ok) return setError(json.error || "조회 오류");

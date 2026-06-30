@@ -3,6 +3,9 @@
  * (운영계획서 기준값 — 필요 시 환경변수로 덮어쓸 수 있게 구성)
  */
 
+/** 서브패스 배포용 basePath (도메인.kr/kiosk). 단독 배포 시 "" 로 변경. */
+export const BASE_PATH = "/kiosk";
+
 export const BRAND = {
   nameKo: "일산비치짐",
   nameEn: "ILSAN BEACH GYM",

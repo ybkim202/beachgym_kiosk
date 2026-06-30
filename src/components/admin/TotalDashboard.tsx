@@ -1,4 +1,5 @@
 "use client";
+import { BASE_PATH } from "@/lib/config";
 
 import { useEffect, useState } from "react";
 import type { TotalStats } from "@/lib/types";
@@ -11,7 +12,7 @@ export function TotalDashboard() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/api/admin/total", { cache: "no-store" });
+        const res = await fetch(BASE_PATH + "/api/admin/total", { cache: "no-store" });
         if (res.status === 401) {
           window.location.reload();
           return;

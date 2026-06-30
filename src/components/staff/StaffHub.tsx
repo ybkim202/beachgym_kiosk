@@ -1,4 +1,5 @@
 "use client";
+import { BASE_PATH } from "@/lib/config";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -251,7 +252,7 @@ function FormShell({
 }
 
 async function postEvent(fd: FormData): Promise<string | null> {
-  const res = await fetch("/api/staff/event", { method: "POST", body: fd });
+  const res = await fetch(BASE_PATH + "/api/staff/event", { method: "POST", body: fd });
   if (res.status === 401) {
     window.location.reload();
     return "재로그인이 필요합니다.";

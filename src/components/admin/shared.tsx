@@ -1,4 +1,5 @@
 "use client";
+import { BASE_PATH } from "@/lib/config";
 
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
@@ -46,7 +47,7 @@ export function AdminHeader({
   children?: React.ReactNode;
 }) {
   const logout = async () => {
-    await fetch("/api/admin/login", { method: "DELETE" });
+    await fetch(BASE_PATH + "/api/admin/login", { method: "DELETE" });
     window.location.reload();
   };
   return (
