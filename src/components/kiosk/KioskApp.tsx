@@ -310,13 +310,11 @@ function LanguageStep({ onSelect }: { onSelect: (l: Language) => void }) {
       <p className="text-muted mt-2 text-xl">Select your language</p>
       <div className="mt-14 grid w-full max-w-4xl grid-cols-2 gap-8">
         <LangCard
-          flag="🇰🇷"
           title="한국어"
           sub="내국인 · Korean"
           onClick={() => onSelect("ko")}
         />
         <LangCard
-          flag="🇬🇧"
           title="English"
           sub="외국인 · Foreigner"
           onClick={() => onSelect("en")}
@@ -327,12 +325,10 @@ function LanguageStep({ onSelect }: { onSelect: (l: Language) => void }) {
 }
 
 function LangCard({
-  flag,
   title,
   sub,
   onClick,
 }: {
-  flag: string;
   title: string;
   sub: string;
   onClick: () => void;
@@ -342,7 +338,6 @@ function LangCard({
       onClick={onClick}
       className="hover:border-marina group flex flex-col items-center gap-4 rounded-3xl border-2 border-line bg-white p-12 transition-all active:scale-[0.98]"
     >
-      <span className="text-7xl">{flag}</span>
       <span className="text-ink text-3xl font-medium">{title}</span>
       <span className="text-muted text-lg">{sub}</span>
     </button>
