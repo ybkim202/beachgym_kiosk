@@ -64,7 +64,7 @@ create table if not exists public.surveys (
   created_at   timestamptz not null default now(),
   type         text not null check (type in ('facility','class')),
   visit_count  text not null check (visit_count in ('first','2_3','4plus')),
-  residence    text not null check (residence in ('donggu','ulsan_other','outside')),
+  residence    text not null check (residence in ('seoul','busan','daegu','incheon','gwangju','daejeon','ulsan','sejong','gyeonggi','gangwon','chungbuk','chungnam','jeonbuk','jeonnam','gyeongbuk','gyeongnam','jeju','overseas')),
   age_group    text check (age_group in ('10s','20s','30s','40s','50plus')),
   gender       text check (gender in ('male','female','other')),
   overall      int  not null check (overall between 1 and 5),

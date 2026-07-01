@@ -2,7 +2,10 @@
 
 export type SurveyType = "facility" | "class";
 export type VisitCount = "first" | "2_3" | "4plus";
-export type Residence = "donggu" | "ulsan_other" | "outside";
+export type Residence =
+  | "seoul" | "busan" | "daegu" | "incheon" | "gwangju" | "daejeon"
+  | "ulsan" | "sejong" | "gyeonggi" | "gangwon" | "chungbuk" | "chungnam"
+  | "jeonbuk" | "jeonnam" | "gyeongbuk" | "gyeongnam" | "jeju" | "overseas";
 export type PaidIntent = "yes" | "depends" | "no";
 
 export const VISIT_COUNTS: { v: VisitCount; label: string }[] = [
@@ -12,9 +15,24 @@ export const VISIT_COUNTS: { v: VisitCount; label: string }[] = [
 ];
 
 export const RESIDENCES: { v: Residence; label: string }[] = [
-  { v: "donggu", label: "동구" },
-  { v: "ulsan_other", label: "울산 내 타 구·군" },
-  { v: "outside", label: "울산 외" },
+  { v: "seoul", label: "서울" },
+  { v: "busan", label: "부산" },
+  { v: "daegu", label: "대구" },
+  { v: "incheon", label: "인천" },
+  { v: "gwangju", label: "광주" },
+  { v: "daejeon", label: "대전" },
+  { v: "ulsan", label: "울산" },
+  { v: "sejong", label: "세종" },
+  { v: "gyeonggi", label: "경기" },
+  { v: "gangwon", label: "강원" },
+  { v: "chungbuk", label: "충북" },
+  { v: "chungnam", label: "충남" },
+  { v: "jeonbuk", label: "전북" },
+  { v: "jeonnam", label: "전남" },
+  { v: "gyeongbuk", label: "경북" },
+  { v: "gyeongnam", label: "경남" },
+  { v: "jeju", label: "제주" },
+  { v: "overseas", label: "해외" },
 ];
 
 export const SURVEY_AGE_GROUPS = [

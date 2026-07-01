@@ -4,6 +4,7 @@ import { isSupabaseConfigured } from "@/lib/supabase";
 import {
   CLASS_DETAILS,
   FACILITY_DETAILS,
+  RESIDENCES,
   type SurveyInput,
 } from "@/lib/survey";
 
@@ -14,7 +15,7 @@ function bad(message: string) {
 }
 
 const VISIT = ["first", "2_3", "4plus"];
-const RES = ["donggu", "ulsan_other", "outside"];
+const RES = RESIDENCES.map((r) => r.v) as string[];
 const PAID = ["yes", "depends", "no"];
 const CLASSES = ["hyrox", "crossfit", "running", "yoga"];
 
