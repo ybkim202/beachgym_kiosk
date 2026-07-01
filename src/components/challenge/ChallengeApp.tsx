@@ -344,15 +344,28 @@ export function ChallengeApp() {
               </div>
 
               <div>
-                <h3 className="text-ink mb-1 font-medium text-sm">인증사진</h3>
-                <input
-                  type="file"
-                  accept="image/*"
-                  capture="environment"
-                  onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
-                  className="text-muted w-full text-sm"
-                />
-                {photo && <div className="text-marina mt-1 text-xs">첨부됨: {photo.name}</div>}
+                <h3 className="text-ink mb-1 text-sm font-medium">인증사진</h3>
+                <label
+                  className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed px-4 py-4 font-semibold active:scale-[0.99] ${
+                    photo ? "border-marina text-marina" : "border-marina/60 text-marina"
+                  }`}
+                >
+                  <span className="text-2xl">📷</span>
+                  {photo ? "사진 다시 촬영 / 선택" : "사진 촬영 / 선택"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    onChange={(e) => setPhoto(e.target.files?.[0] ?? null)}
+                    className="hidden"
+                  />
+                </label>
+                {photo && (
+                  <div className="text-marina mt-2 flex items-center gap-1 text-xs">
+                    <span>✓ 첨부됨</span>
+                    <span className="text-muted truncate">· {photo.name}</span>
+                  </div>
+                )}
               </div>
             </div>
 
