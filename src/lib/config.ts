@@ -37,9 +37,9 @@ export const LINKS = {
   /** 클래스(하이록스·크로스핏·러닝·요가) 예약 페이지 */
   reservation:
     process.env.NEXT_PUBLIC_RESERVATION_URL ?? "https://ilsanbeachgym.com/booking",
-  /** 설문(키오스크 서브패스) */
+  /** 설문(짧은 공개 링크 → /kiosk/survey 로 리다이렉트) */
   survey:
-    process.env.NEXT_PUBLIC_SURVEY_URL ?? "https://ilsanbeachgym.com/kiosk/survey",
+    process.env.NEXT_PUBLIC_SURVEY_URL ?? "https://ilsanbeachgym.com/survey",
   /** 기구 사용법 QR이 연결되는 가이드 페이지 */
   guide: process.env.NEXT_PUBLIC_GUIDE_URL ?? "https://ilsanbeachgym.com/facility",
 } as const;
