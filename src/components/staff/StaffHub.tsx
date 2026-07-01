@@ -88,6 +88,21 @@ export function StaffHub({
               }}
             />
             <Link
+              href="/challenge"
+              className="flex items-center gap-4 rounded-2xl border border-line p-5 text-left transition-colors active:scale-[0.99]"
+            >
+              <span
+                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl"
+                style={{ backgroundColor: "#c85840", color: "white" }}
+              >
+                🏆
+              </span>
+              <span>
+                <span className="text-ink block font-medium">챌린지 진행</span>
+                <span className="text-muted block text-sm">원픽 · 미니 하이록스 · 결과 보드 등록</span>
+              </span>
+            </Link>
+            <Link
               href="/admin/staff"
               className="text-muted mt-2 text-center text-sm underline"
             >
