@@ -34,13 +34,14 @@ export const OPERATION = {
 /** 키오스크 5단계 STEP4에서 노출할 외부 링크 + 알림톡에 담을 링크 */
 export const LINKS = {
   homepage: process.env.NEXT_PUBLIC_HOMEPAGE_URL ?? "https://ilsanbeachgym.com",
-  /** 클래스(하이록스·크로스핏·러닝·요가) 예약 사이트 */
+  /** 클래스(하이록스·크로스핏·러닝·요가) 예약 페이지 */
   reservation:
-    process.env.NEXT_PUBLIC_RESERVATION_URL ?? "https://ilsanbeachgym.com/",
+    process.env.NEXT_PUBLIC_RESERVATION_URL ?? "https://ilsanbeachgym.com/booking",
+  /** 설문(키오스크 서브패스) */
   survey:
-    process.env.NEXT_PUBLIC_SURVEY_URL ?? "https://ilsanbeachgym.com/survey",
+    process.env.NEXT_PUBLIC_SURVEY_URL ?? "https://ilsanbeachgym.com/kiosk/survey",
   /** 기구 사용법 QR이 연결되는 가이드 페이지 */
-  guide: process.env.NEXT_PUBLIC_GUIDE_URL ?? "https://ilsanbeachgym.com/guide",
+  guide: process.env.NEXT_PUBLIC_GUIDE_URL ?? "https://ilsanbeachgym.com/facility",
 } as const;
 
 /** 프로그램 (운영계획서 Program Identity) */
