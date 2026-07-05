@@ -3,6 +3,7 @@ import { BASE_PATH } from "@/lib/config";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
+import { compressImage } from "@/lib/image";
 import {
   ONEPICK_EVENTS,
   ONEPICK_DIVISIONS,
@@ -96,7 +97,7 @@ export function ChallengeApp() {
       fd.set("passed", String(passed));
       if (resultLabel.trim()) fd.set("resultLabel", resultLabel.trim());
       if (elapsed > 0) fd.set("elapsedMs", String(Math.round(elapsed)));
-      if (photo) fd.set("photo", photo);
+      if (photo) fd.set("photo", await compressImage(photo));
       const res = await fetch(BASE_PATH + "/api/challenge", {
         method: "POST",
         body: fd,

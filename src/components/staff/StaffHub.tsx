@@ -1,5 +1,6 @@
 "use client";
 import { BASE_PATH } from "@/lib/config";
+import { compressImage } from "@/lib/image";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -294,7 +295,7 @@ function CheckinForm({ onBack, onDone }: { onBack: () => void; onDone: () => voi
     fd.set("staffName", name);
     fd.set("title", "출근");
     fd.set("photoCount", "1");
-    fd.set("photo_0", file);
+    fd.set("photo_0", await compressImage(file));
     fd.set("label_0", "출근 확인");
     const err = await postEvent(fd);
     if (err) {
@@ -365,7 +366,7 @@ function CategoryPhotoForm({
     fd.set("category", cat.key);
     fd.set("memo", memo);
     fd.set("photoCount", "1");
-    fd.set("photo_0", file);
+    fd.set("photo_0", await compressImage(file));
     fd.set("label_0", cat.label);
     const err = await postEvent(fd);
     if (err) {
@@ -444,10 +445,11 @@ function CheckoutForm({
     fd.set("title", "퇴근");
     fd.set("memo", memo);
     fd.set("photoCount", String(photos.length));
-    photos.forEach((p, i) => {
-      fd.set(`photo_${i}`, files[p.key] as File);
+    for (let i = 0; i < photos.length; i++) {
+      const p = photos[i];
+      fd.set(`photo_${i}`, await compressImage(files[p.key] as File));
       fd.set(`label_${i}`, p.label);
-    });
+    }
     const err = await postEvent(fd);
     if (err) {
       setError(err);
