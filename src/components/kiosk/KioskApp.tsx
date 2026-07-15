@@ -275,26 +275,20 @@ function KioskHeader({
   const labels = [T.stepLanguage, T.stepAgreement, T.stepInfo, T.stepGuide, T.stepDone];
   return (
     <header className="flex items-center justify-between px-5 pb-3 pt-5 md:px-[6vw] md:pb-4 md:pt-6">
-      <button onClick={onHome} className="flex items-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`${BASE_PATH}/brand/symbol.png`}
-          alt="ILSAN BEACH GYM"
-          className="h-8 w-8 sm:hidden"
-        />
+      <button onClick={onHome} className="flex shrink-0 items-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${BASE_PATH}/brand/logo-horizontal.png`}
           alt="ILSAN BEACH GYM · HAEPARANG · ULSAN DONGGU"
-          className="hidden h-9 w-auto sm:block"
+          className="h-6 w-auto md:h-9"
         />
       </button>
       {!hideStepper && (
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-1 md:gap-2">
           {labels.slice(0, 4).map((label, i) => (
-            <div key={label} className="flex items-center gap-2">
+            <div key={label} className="flex items-center gap-1 md:gap-2">
               <div
-                className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm transition-colors ${
+                className={`flex items-center gap-2 rounded-full px-2 py-1 text-sm transition-colors md:px-3 md:py-1.5 ${
                   i === current
                     ? "bg-marina text-white"
                     : i < current
