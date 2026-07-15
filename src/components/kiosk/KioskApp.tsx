@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LogoFull, LogoMark } from "@/components/Logo";
 import { t } from "@/lib/i18n";
 import { LINKS, OPERATION, BASE_PATH } from "@/lib/config";
 import type { AgeGroup, Gender, Language, Region } from "@/lib/types";
@@ -241,7 +240,12 @@ function Attract({ onStart, lang }: { onStart: () => void; lang: Language }) {
       }}
       className="from-marina-light flex h-full min-h-dvh w-full flex-col items-center justify-center bg-gradient-to-b to-white px-5"
     >
-      <LogoFull />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`${BASE_PATH}/brand/logo-vertical.png`}
+        alt="ILSAN BEACH GYM · HAEPARANG WELLNESS PARK"
+        className="h-auto w-[230px] md:w-[300px]"
+      />
       <div className="mt-12 flex flex-col items-center gap-3 md:mt-16">
         <span className="bg-marina/10 text-marina inline-flex h-3 w-3 animate-ping rounded-full" />
         <p className="text-marina animate-pulse text-xl font-medium tracking-wide md:text-2xl">
@@ -271,11 +275,19 @@ function KioskHeader({
   const labels = [T.stepLanguage, T.stepAgreement, T.stepInfo, T.stepGuide, T.stepDone];
   return (
     <header className="flex items-center justify-between px-5 pb-3 pt-5 md:px-[6vw] md:pb-4 md:pt-6">
-      <button onClick={onHome} className="flex items-center gap-2 md:gap-3">
-        <LogoMark size={30} color="var(--marina)" />
-        <span className="text-ink hidden text-base font-light tracking-[0.12em] sm:inline md:text-lg md:tracking-[0.15em]">
-          ILSAN BEACH GYM
-        </span>
+      <button onClick={onHome} className="flex items-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${BASE_PATH}/brand/symbol.png`}
+          alt="ILSAN BEACH GYM"
+          className="h-8 w-8 sm:hidden"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${BASE_PATH}/brand/logo-horizontal.png`}
+          alt="ILSAN BEACH GYM · HAEPARANG · ULSAN DONGGU"
+          className="hidden h-9 w-auto sm:block"
+        />
       </button>
       {!hideStepper && (
         <div className="flex items-center gap-2">
