@@ -11,6 +11,7 @@
   --marina-light: #eaf1f8;
   --terracotta: #c85840; /* accent */
   --terracotta-dark: #a8442f;
+  --point: var(--terracotta); /* 포인트(경고·실패) — terracotta 별칭 */
   --ink: #1a1a1a; /* material black */
   --muted: #6b7280;
   --line: #e6e8eb;
@@ -26,6 +27,7 @@
   --color-marina-light: var(--marina-light);
   --color-terracotta: var(--terracotta);
   --color-terracotta-dark: var(--terracotta-dark);
+  --color-point: var(--point);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);

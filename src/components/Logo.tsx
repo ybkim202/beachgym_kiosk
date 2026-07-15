@@ -41,12 +41,12 @@ export function LogoFull({
 }) {
   return (
     <div className={`flex flex-col items-center ${className ?? ""}`}>
-      <LogoMark size={96} color={markColor} />
+      <LogoMark size={72} color={markColor} className="md:h-24 md:w-24" />
       <div className="mt-5 text-center">
-        <div className="text-ink text-4xl font-light tracking-[0.18em]">
+        <div className="text-ink text-2xl font-light tracking-[0.12em] md:text-4xl md:tracking-[0.18em]">
           ILSAN BEACH GYM
         </div>
-        <div className="text-muted mt-2 text-base tracking-[0.5em]">
+        <div className="text-muted mt-2 text-sm tracking-[0.3em] md:text-base md:tracking-[0.5em]">
           해 파 랑 길 · 울 산 동 구
         </div>
       </div>

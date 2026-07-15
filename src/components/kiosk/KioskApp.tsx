@@ -143,13 +143,13 @@ export function KioskApp() {
 
   return (
     <div
-      className="kiosk-root bg-surface relative h-dvh w-screen overflow-hidden"
+      className="kiosk-root bg-surface relative min-h-dvh w-full overflow-x-hidden overflow-y-auto md:h-dvh md:overflow-hidden"
       onPointerDown={bump}
     >
       {phase === "idle" ? (
         <Attract onStart={() => setPhase("lang")} lang={lang} />
       ) : (
-        <div className="animate-step-in flex h-full flex-col">
+        <div className="animate-step-in flex min-h-dvh flex-col md:h-full">
           <KioskHeader
             current={stepIndex}
             lang={lang}
@@ -157,7 +157,7 @@ export function KioskApp() {
             hideStepper={phase === "done"}
           />
 
-          <main className="min-h-0 flex-1 px-[6vw] pb-6">
+          <main className="min-h-0 flex-1 px-5 pb-6 md:px-[6vw]">
             {phase === "lang" && (
               <LanguageStep
                 onSelect={(l) => {
@@ -239,16 +239,16 @@ function Attract({ onStart, lang }: { onStart: () => void; lang: Language }) {
         enterFullscreen();
         onStart();
       }}
-      className="from-marina-light flex h-full w-full flex-col items-center justify-center bg-gradient-to-b to-white"
+      className="from-marina-light flex h-full min-h-dvh w-full flex-col items-center justify-center bg-gradient-to-b to-white px-5"
     >
       <LogoFull />
-      <div className="mt-16 flex flex-col items-center gap-3">
+      <div className="mt-12 flex flex-col items-center gap-3 md:mt-16">
         <span className="bg-marina/10 text-marina inline-flex h-3 w-3 animate-ping rounded-full" />
-        <p className="text-marina animate-pulse text-2xl font-medium tracking-wide">
+        <p className="text-marina animate-pulse text-xl font-medium tracking-wide md:text-2xl">
           {T.touchToStart}
         </p>
       </div>
-      <p className="text-muted absolute bottom-8 text-sm tracking-widest">
+      <p className="text-muted absolute bottom-8 px-5 text-center text-xs tracking-widest md:text-sm">
         해파랑 웰니스파크 · The Deck · {OPERATION.feeLabel}
       </p>
     </button>
@@ -270,10 +270,10 @@ function KioskHeader({
   const T = t(lang);
   const labels = [T.stepLanguage, T.stepAgreement, T.stepInfo, T.stepGuide, T.stepDone];
   return (
-    <header className="flex items-center justify-between px-[6vw] pb-4 pt-6">
-      <button onClick={onHome} className="flex items-center gap-3">
-        <LogoMark size={34} color="var(--marina)" />
-        <span className="text-ink text-lg font-light tracking-[0.15em]">
+    <header className="flex items-center justify-between px-5 pb-3 pt-5 md:px-[6vw] md:pb-4 md:pt-6">
+      <button onClick={onHome} className="flex items-center gap-2 md:gap-3">
+        <LogoMark size={30} color="var(--marina)" />
+        <span className="text-ink hidden text-base font-light tracking-[0.12em] sm:inline md:text-lg md:tracking-[0.15em]">
           ILSAN BEACH GYM
         </span>
       </button>
@@ -305,10 +305,10 @@ function KioskHeader({
 /* ============================ Step 1: Language ============================ */
 function LanguageStep({ onSelect }: { onSelect: (l: Language) => void }) {
   return (
-    <div className="flex h-full flex-col items-center justify-center">
-      <h1 className="text-ink text-4xl font-light">언어를 선택하세요</h1>
-      <p className="text-muted mt-2 text-xl">Select your language</p>
-      <div className="mt-14 grid w-full max-w-4xl grid-cols-2 gap-8">
+    <div className="flex h-full flex-col items-center justify-center py-8">
+      <h1 className="text-ink text-3xl font-light md:text-4xl">언어를 선택하세요</h1>
+      <p className="text-muted mt-2 text-lg md:text-xl">Select your language</p>
+      <div className="mt-8 grid w-full max-w-4xl grid-cols-1 gap-4 md:mt-14 md:grid-cols-2 md:gap-8">
         <LangCard
           title="한국어"
           sub="내국인 · Korean"
@@ -336,10 +336,10 @@ function LangCard({
   return (
     <button
       onClick={onClick}
-      className="hover:border-marina group flex flex-col items-center gap-4 rounded-3xl border-2 border-line bg-white p-12 transition-all active:scale-[0.98]"
+      className="hover:border-marina group flex flex-col items-center gap-3 rounded-3xl border-2 border-line bg-white p-8 transition-all active:scale-[0.98] md:gap-4 md:p-12"
     >
-      <span className="text-ink text-3xl font-medium">{title}</span>
-      <span className="text-muted text-lg">{sub}</span>
+      <span className="text-ink text-2xl font-medium md:text-3xl">{title}</span>
+      <span className="text-muted text-base md:text-lg">{sub}</span>
     </button>
   );
 }
@@ -369,14 +369,14 @@ function AgreementStep({
   const T = t(lang);
   const canNext = agreed && signed;
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex min-h-0 flex-col md:h-full">
       <StepTitle title={T.agreeTitle} sub={T.agreeSub} />
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-4 md:min-h-0 md:flex-1 md:grid-cols-2 md:gap-6">
         {/* 수칙 */}
         <div className="flex min-h-0 flex-col rounded-2xl border border-line bg-white p-6">
-          <ul className="min-h-0 flex-1 space-y-3 overflow-y-auto pr-2">
+          <ul className="space-y-3 md:min-h-0 md:flex-1 md:overflow-y-auto md:pr-2">
             {T.agreeItems.map((item, i) => (
-              <li key={i} className="flex gap-3 text-[17px] leading-relaxed">
+              <li key={i} className="flex gap-3 text-[15px] leading-relaxed md:text-[17px]">
                 <span className="text-marina mt-0.5 font-bold">{i + 1}</span>
                 <span className="text-ink/85">{item}</span>
               </li>
@@ -409,7 +409,7 @@ function AgreementStep({
               {T.clearSign}
             </button>
           </div>
-          <div className="min-h-0 flex-1 rounded-2xl border-2 border-dashed border-line">
+          <div className="h-44 rounded-2xl border-2 border-dashed border-line md:h-auto md:min-h-0 md:flex-1">
             <SignaturePad clearSignal={clearSign} onChange={onSignChange} />
           </div>
           {!signed && (
@@ -460,10 +460,10 @@ function InfoStep({
   ];
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex min-h-0 flex-col md:h-full">
       <StepTitle title={T.infoTitle} />
-      <div className="min-h-0 flex-1 overflow-y-auto">
-        <div className="mx-auto grid max-w-3xl grid-cols-2 gap-x-8 gap-y-5">
+      <div className="md:min-h-0 md:flex-1 md:overflow-y-auto">
+        <div className="mx-auto grid max-w-3xl grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-8 md:gap-y-5">
           <Field label={T.name} required error={touched && !nameOk ? T.errName : undefined}>
             <input
               value={form.name}
@@ -490,9 +490,9 @@ function InfoStep({
             />
           </Field>
 
-          <div className="col-span-2">
+          <div className="md:col-span-2">
             <Field label={T.partySize} required>
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
                 <span className="text-muted text-base">{T.partyHint}</span>
                 <NumberStepper
                   value={form.partySize}
@@ -506,7 +506,7 @@ function InfoStep({
             </Field>
           </div>
 
-          <div className="col-span-2">
+          <div className="md:col-span-2">
             <Field
               label={T.ageGroup}
               required
@@ -516,6 +516,7 @@ function InfoStep({
                 options={T.ageGroups}
                 value={form.ageGroup}
                 onSelect={(v) => set("ageGroup", v as AgeGroup)}
+                cols="grid-cols-3 md:grid-cols-5"
               />
             </Field>
           </div>
@@ -530,7 +531,7 @@ function InfoStep({
                 <button
                   key={g.v}
                   onClick={() => set("gender", g.v)}
-                  className={`flex-1 rounded-xl border-2 py-3 text-lg transition-colors ${
+                  className={`flex-1 rounded-xl border-2 py-3 text-base transition-colors md:text-lg ${
                     form.gender === g.v
                       ? "border-marina bg-marina-light text-marina font-medium"
                       : "border-line text-ink/70"
@@ -542,7 +543,7 @@ function InfoStep({
             </div>
           </Field>
 
-          <div className="col-span-2">
+          <div className="md:col-span-2">
             <Field
               label={T.region}
               required
@@ -552,7 +553,7 @@ function InfoStep({
                 options={T.regions}
                 value={form.region}
                 onSelect={(v) => set("region", v as Region)}
-                cols={4}
+                cols="grid-cols-3 md:grid-cols-4"
               />
             </Field>
           </div>
@@ -627,18 +628,16 @@ function ChoiceGroup({
   options: readonly { v: string; label: string }[];
   value: string | undefined;
   onSelect: (v: string) => void;
-  cols?: number;
+  /** 반응형 Tailwind 그리드 컬럼 클래스 (예: "grid-cols-3 md:grid-cols-5") */
+  cols?: string;
 }) {
   return (
-    <div
-      className="grid gap-3"
-      style={{ gridTemplateColumns: `repeat(${cols ?? options.length}, minmax(0, 1fr))` }}
-    >
+    <div className={`grid gap-2 md:gap-3 ${cols ?? "grid-cols-2 md:grid-cols-3"}`}>
       {options.map((o) => (
         <button
           key={o.v}
           onClick={() => onSelect(o.v)}
-          className={`rounded-xl border-2 py-3 text-lg transition-colors ${
+          className={`rounded-xl border-2 py-3 text-base transition-colors md:text-lg ${
             value === o.v
               ? "border-marina bg-marina-light text-marina font-medium"
               : "border-line text-ink/70"
@@ -667,9 +666,9 @@ function GuideStep({
 }) {
   const T = t(lang);
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex min-h-0 flex-col md:h-full">
       <StepTitle title={T.guideTitle} />
-      <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-5">
+      <div className="grid grid-cols-1 gap-4 md:min-h-0 md:flex-1 md:grid-cols-2 md:grid-rows-2 md:gap-5">
         {/* 운영 시간 */}
         <GuideCard title={T.guideHours} accent>
           <p className="text-marina text-3xl font-bold">{T.guideHoursVal}</p>
@@ -720,7 +719,7 @@ function GuideCard({
       }`}
     >
       <h3 className="text-marina mb-3 text-lg font-bold">{title}</h3>
-      <div className="min-h-0 flex-1 overflow-y-auto">{children}</div>
+      <div className="md:min-h-0 md:flex-1 md:overflow-y-auto">{children}</div>
     </div>
   );
 }
@@ -739,21 +738,21 @@ function DoneStep({
 }) {
   const T = t(lang);
   return (
-    <div className="flex h-full flex-col items-center justify-center text-center">
-      <div className="bg-marina flex h-20 w-20 items-center justify-center rounded-full text-4xl text-white">
+    <div className="flex h-full flex-col items-center justify-center py-8 text-center">
+      <div className="bg-marina flex h-16 w-16 items-center justify-center rounded-full text-3xl text-white md:h-20 md:w-20 md:text-4xl">
         ✓
       </div>
-      <h1 className="text-ink mt-5 text-4xl font-light">{T.doneTitle}</h1>
-      <p className="text-muted mt-3 text-xl">
+      <h1 className="text-ink mt-5 text-3xl font-light md:text-4xl">{T.doneTitle}</h1>
+      <p className="text-muted mt-3 text-lg md:text-xl">
         {notifyOk ? T.doneSub : T.doneSubFail}
       </p>
 
       {/* 클래스 예약 안내 + QR */}
-      <div className="border-terracotta/30 bg-terracotta/5 mt-8 flex items-center gap-7 rounded-3xl border p-7">
+      <div className="border-terracotta/30 bg-terracotta/5 mt-8 flex flex-col items-center gap-5 rounded-3xl border p-6 md:flex-row md:gap-7 md:p-7">
         <div className="rounded-2xl bg-white p-3">
           <QR value={LINKS.reservation} size={150} />
         </div>
-        <div className="max-w-xs text-left">
+        <div className="max-w-xs text-center md:text-left">
           <p className="text-terracotta text-2xl font-bold">{T.classBookTitle}</p>
           <p className="text-ink/80 mt-2 whitespace-pre-line text-lg leading-relaxed">
             {T.classBookBody}
@@ -776,9 +775,9 @@ function DoneStep({
 /* ============================ Shared bits ============================ */
 function StepTitle({ title, sub }: { title: string; sub?: string }) {
   return (
-    <div className="py-4">
-      <h2 className="text-ink text-3xl font-light">{title}</h2>
-      {sub && <p className="text-muted mt-1 text-lg">{sub}</p>}
+    <div className="py-3 md:py-4">
+      <h2 className="text-ink text-2xl font-light md:text-3xl">{title}</h2>
+      {sub && <p className="text-muted mt-1 text-base md:text-lg">{sub}</p>}
     </div>
   );
 }
@@ -826,17 +825,17 @@ function NavBar({
 }) {
   const T = t(lang);
   return (
-    <div className="flex items-center justify-between pt-5">
+    <div className="flex items-center justify-between gap-3 pt-4 md:pt-5">
       <button
         onClick={onBack}
-        className="text-ink/70 rounded-2xl border-2 border-line bg-white px-10 py-4 text-lg font-medium active:scale-[0.98]"
+        className="text-ink/70 rounded-2xl border-2 border-line bg-white px-6 py-3.5 text-base font-medium active:scale-[0.98] md:px-10 md:py-4 md:text-lg"
       >
         ← {T.back}
       </button>
       <button
         onClick={onNext}
         disabled={nextDisabled}
-        className={`rounded-2xl px-14 py-4 text-lg font-semibold text-white transition-all active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 ${
+        className={`rounded-2xl px-8 py-3.5 text-base font-semibold text-white transition-all active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 md:px-14 md:py-4 md:text-lg ${
           accent ? "bg-terracotta" : "bg-marina"
         }`}
       >
