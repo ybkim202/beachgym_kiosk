@@ -142,13 +142,13 @@ export function KioskApp() {
 
   return (
     <div
-      className="kiosk-root bg-surface relative min-h-dvh w-full overflow-x-hidden overflow-y-auto md:h-dvh md:overflow-hidden"
+      className="kiosk-root bg-surface relative h-dvh w-full overflow-x-hidden overflow-y-auto"
       onPointerDown={bump}
     >
       {phase === "idle" ? (
         <Attract onStart={() => setPhase("lang")} lang={lang} />
       ) : (
-        <div className="animate-step-in flex min-h-dvh flex-col md:h-full">
+        <div className="animate-step-in flex h-full flex-col">
           <KioskHeader
             current={stepIndex}
             lang={lang}
