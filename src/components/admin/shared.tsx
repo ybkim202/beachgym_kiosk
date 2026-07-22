@@ -200,9 +200,9 @@ function rowsFrom<K extends string>(
     .filter((r) => r.v > 0);
 }
 
-/** 성별·연령대·지역·내외국인 분포 패널 (오늘/전체 공용, 서명자 기준) */
+/** 성별·연령대·지역·내외국인 분포 패널 (오늘/전체 공용, 동반 인원 포함 — 전체 누적과 합산 일치) */
 export function BreakdownPanel({ breakdown }: { breakdown: Breakdowns }) {
-  // 분모 = 서명자(레코드) 수 = 성별 분포 합
+  // 분모 = 인원 합계(동반 인원 포함) = 성별 분포 합
   const denom = Math.max(
     1,
     Object.values(breakdown.gender).reduce((a, b) => a + b, 0),
@@ -227,7 +227,7 @@ export function BreakdownPanel({ breakdown }: { breakdown: Breakdowns }) {
   return (
     <div className="space-y-6 rounded-3xl border border-line bg-white p-6">
       <p className="text-muted -mb-2 text-xs">
-        분포는 서명자(체크인) {denom}명 기준
+        분포는 전체 인원(동반 포함) {denom}명 기준
       </p>
       <Section title="성별" rows={genderRows} total={denom} />
       <Section title="연령대" rows={ageRows} total={denom} color="var(--marina-dark)" />

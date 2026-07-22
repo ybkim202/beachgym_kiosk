@@ -80,12 +80,12 @@ function emptyBreakdowns(): Breakdowns {
   };
 }
 
-/** 한 행을 분포에 누적 */
-function tally(b: Breakdowns, r: RowSlim) {
-  b.gender[(r.gender as Gender) ?? "unknown"]++;
-  b.age[(r.age_group as AgeGroup) ?? "unknown"]++;
-  b.region[(r.region as Region) ?? "unknown"]++;
-  b.language[r.language]++;
+/** 한 행을 분포에 누적 — 동반 인원(party_size)만큼 가중해 "전체 누적" 인원수와 합이 일치하도록 함 */
+function tally(b: Breakdowns, r: RowSlim, weight: number) {
+  b.gender[(r.gender as Gender) ?? "unknown"] += weight;
+  b.age[(r.age_group as AgeGroup) ?? "unknown"] += weight;
+  b.region[(r.region as Region) ?? "unknown"] += weight;
+  b.language[r.language] += weight;
 }
 
 /** 메인 대시보드(오늘 현황) 집계 */
@@ -141,9 +141,10 @@ export async function getDashboardStats(): Promise<DashboardStats> {
   const breakdown = emptyBreakdowns();
   const hourlyMap = new Map<number, number>();
   for (const r of todayRows) {
-    tally(breakdown, r);
+    const size = r.party_size ?? 1;
+    tally(breakdown, r, size);
     const hr = kstParts(new Date(r.created_at)).hour;
-    hourlyMap.set(hr, (hourlyMap.get(hr) ?? 0) + (r.party_size ?? 1));
+    hourlyMap.set(hr, (hourlyMap.get(hr) ?? 0) + size);
   }
 
   const hourly: { hour: number; count: number }[] = [];
@@ -202,8 +203,8 @@ export async function getTotalStats(): Promise<TotalStats> {
   let total = 0; // 인원 합계
 
   for (const r of rows) {
-    tally(breakdown, r); // 분포는 서명자(레코드) 기준
     const size = r.party_size ?? 1;
+    tally(breakdown, r, size); // 분포도 동반 인원 포함 — total과 합산 일치
     total += size;
     const key = kstDateKey(new Date(r.created_at));
     dailyMap.set(key, (dailyMap.get(key) ?? 0) + size); // 일자별 인원
