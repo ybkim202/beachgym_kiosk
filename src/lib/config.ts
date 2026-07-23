@@ -40,8 +40,8 @@ export const LINKS = {
   /** 설문(짧은 공개 링크 → /kiosk/survey 로 리다이렉트) */
   survey:
     process.env.NEXT_PUBLIC_SURVEY_URL ?? "https://ilsanbeachgym.com/survey",
-  /** 기구 사용법 QR이 연결되는 가이드 페이지 */
-  guide: process.env.NEXT_PUBLIC_GUIDE_URL ?? "https://ilsanbeachgym.com/facility",
+  /** 기구 사용법 QR·알림톡이 연결되는 가이드 페이지 (하이록스 8종목 사용법) */
+  guide: process.env.NEXT_PUBLIC_GUIDE_URL ?? "https://www.ilsanbeachgym.com/manual",
 } as const;
 
 /** 프로그램 (운영계획서 Program Identity) */
